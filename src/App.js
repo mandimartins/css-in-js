@@ -1,25 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { ResetStyle } from './components/globalStyle';
+
+import Input from './components/Input/index';
 
 function App() {
+  const [formInput, setFormInput] = useState({
+    name: '',
+    lastName: '',
+    email: '',
+    password: ''
+  });
+
+  const { name, lastName, email, password } = formInput;
+
+  const inputHandler = e => {
+    e.preventDefault();
+    setFormInput({ ...formInput, [e.target.name]: e.target.value });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <ResetStyle></ResetStyle>
+      <Input
+        inputHandle={inputHandler}
+        type="text"
+        name="name"
+        placeholder="Name"
+        label="Name"
+        value={name}
+      ></Input>
+      <Input
+        inputHandle={inputHandler}
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        label="Last Name"
+        value={lastName}
+      ></Input>
+      <Input
+        inputHandle={inputHandler}
+        type="email"
+        name="email"
+        placeholder="E-mail"
+        label="E-mail"
+        value={email}
+      ></Input>
+      <Input
+        inputHandle={inputHandler}
+        type="password"
+        name="password"
+        placeholder="Password"
+        label="Password"
+        value={password}
+      ></Input>
+    </React.Fragment>
   );
 }
 
