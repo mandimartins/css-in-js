@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 import { ResetStyle } from './components/globalStyle';
+import styled from 'styled-components';
 
 import Input from './components/Input/index';
+
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 function App() {
   const [formInput, setFormInput] = useState({
     name: '',
     lastName: '',
     email: '',
-    password: ''
+    password: '',
   });
 
   const { name, lastName, email, password } = formInput;
 
-  const inputHandler = e => {
+  const inputHandler = (e) => {
     e.preventDefault();
     setFormInput({ ...formInput, [e.target.name]: e.target.value });
   };
 
   return (
-    <React.Fragment>
+    <Wrapper>
       <ResetStyle></ResetStyle>
       <Input
         inputHandle={inputHandler}
@@ -53,7 +62,7 @@ function App() {
         label="Password"
         value={password}
       ></Input>
-    </React.Fragment>
+    </Wrapper>
   );
 }
 
