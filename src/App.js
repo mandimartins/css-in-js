@@ -1,15 +1,26 @@
 import React, { useState } from 'react';
 import { ResetStyle } from './components/globalStyle';
-import styled from 'styled-components';
 
 import Input from './components/Input/index';
+import Button from './components/Button/index';
 
+import styled from 'styled-components';
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+const StyledButton = styled(Button)`
+  margin-top: 2rem;
+  width: 42rem;
+  padding: 1rem 1rem;
+  background-color: dodgerblue;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 function App() {
@@ -62,6 +73,7 @@ function App() {
         label="Password"
         value={password}
       ></Input>
+      <StyledButton>Styled button</StyledButton>
     </Wrapper>
   );
 }
